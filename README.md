@@ -1,83 +1,83 @@
-# Goth: Multi-Provider Authentication for Go [![GoDoc](https://godoc.org/github.com/markbates/goth?status.svg)](https://godoc.org/github.com/markbates/goth) [![Build Status](https://github.com/markbates/goth/workflows/ci/badge.svg)](https://github.com/markbates/goth/actions) [![Go Report Card](https://goreportcard.com/badge/github.com/markbates/goth)](https://goreportcard.com/report/github.com/markbates/goth)
+# Goth: Multi-Provider Authentication for Go [![GoDoc](https://godoc.org/github.com/Ticket-Service/auth?status.svg)](https://godoc.org/github.com/Ticket-Service/auth) [![Build Status](https://github.com/Ticket-Service/auth/workflows/ci/badge.svg)](https://github.com/Ticket-Service/auth/actions) [![Go Report Card](https://goreportcard.com/badge/github.com/Ticket-Service/auth)](https://goreportcard.com/report/github.com/Ticket-Service/auth)
 
 Package goth provides a simple, clean, and idiomatic way to write authentication
 packages for Go web applications.
 
 Unlike other similar packages, Goth, lets you write OAuth, OAuth2, or any other
-protocol providers, as long as they implement the [Provider](https://github.com/markbates/goth/blob/master/provider.go#L13-L22) and [Session](https://github.com/markbates/goth/blob/master/session.go#L13-L21) interfaces.
+protocol providers, as long as they implement the [Provider](https://github.com/Ticket-Service/auth/blob/master/provider.go#L13-L22) and [Session](https://github.com/Ticket-Service/auth/blob/master/session.go#L13-L21) interfaces.
 
 This package was inspired by [https://github.com/intridea/omniauth](https://github.com/intridea/omniauth).
 
 ## Installation
 
 ```text
-$ go get github.com/markbates/goth
+$ go get github.com/Ticket-Service/auth
 ```
 
 ## Supported Providers
 
-* Amazon
-* Apple
-* Auth0
-* Azure AD
-* Battle.net
-* Bitbucket
-* Box
-* Cloud Foundry
-* Dailymotion
-* Deezer
-* DigitalOcean
-* Discord
-* Dropbox
-* Eve Online
-* Facebook
-* Fitbit
-* Gitea
-* GitHub
-* Gitlab
-* Google
-* Google+ (deprecated)
-* Heroku
-* InfluxCloud
-* Instagram
-* Intercom
-* Kakao
-* Lastfm
-* LINE
-* Linkedin
-* Mailru
-* Meetup
-* MicrosoftOnline
-* Naver
-* Nextcloud
-* Okta
-* OneDrive
-* OpenID Connect (auto discovery)
-* Oura
-* Patreon
-* Paypal
-* SalesForce
-* Shopify
-* Slack
-* Soundcloud
-* Spotify
-* Steam
-* Strava
-* Stripe
-* TikTok
-* Tumblr
-* Twitch
-* Twitter
-* Typetalk
-* Uber
-* VK
-* WeCom
-* Wepay
-* Xero
-* Yahoo
-* Yammer
-* Yandex
-* Zoom
+- Amazon
+- Apple
+- Auth0
+- Azure AD
+- Battle.net
+- Bitbucket
+- Box
+- Cloud Foundry
+- Dailymotion
+- Deezer
+- DigitalOcean
+- Discord
+- Dropbox
+- Eve Online
+- Facebook
+- Fitbit
+- Gitea
+- GitHub
+- Gitlab
+- Google
+- Google+ (deprecated)
+- Heroku
+- InfluxCloud
+- Instagram
+- Intercom
+- Kakao
+- Lastfm
+- LINE
+- Linkedin
+- Mailru
+- Meetup
+- MicrosoftOnline
+- Naver
+- Nextcloud
+- Okta
+- OneDrive
+- OpenID Connect (auto discovery)
+- Oura
+- Patreon
+- Paypal
+- SalesForce
+- Shopify
+- Slack
+- Soundcloud
+- Spotify
+- Steam
+- Strava
+- Stripe
+- TikTok
+- Tumblr
+- Twitch
+- Twitter
+- Typetalk
+- Uber
+- VK
+- WeCom
+- Wepay
+- Xero
+- Yahoo
+- Yammer
+- Yandex
+- Zoom
 
 ## Examples
 
@@ -89,10 +89,13 @@ To run the example either clone the source from GitHub
 ```text
 $ git clone git@github.com:markbates/goth.git
 ```
+
 or use
+
 ```text
-$ go get github.com/markbates/goth
+$ go get github.com/Ticket-Service/auth
 ```
+
 ```text
 $ cd goth/examples
 $ go get -v

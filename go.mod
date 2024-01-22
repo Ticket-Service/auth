@@ -1,4 +1,4 @@
-module github.com/markbates/goth
+module github.com/Ticket-Service/auth
 
 go 1.15
 
