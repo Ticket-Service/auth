@@ -8,9 +8,10 @@ import (
 	"fmt"
 	"io"
 	"io/ioutil"
+	"log"
 	"net/http"
 
-	"github.com/Ticket-Service/auth"
+	goth "github.com/Ticket-Service/auth"
 	"github.com/Ticket-Service/auth/proxy"
 	"golang.org/x/oauth2"
 )
@@ -83,7 +84,9 @@ func (p *Provider) SetPermissions(permissions string) {
 }
 
 func (p *Provider) Client() *http.Client {
-	return goth.HTTPClientWithFallBack(p.HTTPClient, proxy.Get())
+	proxy := proxy.Get()
+	log.Println("using proxy", proxy)
+	return goth.HTTPClientWithFallBack(p.HTTPClient, proxy)
 }
 
 // Debug is no-op for the Discord package.
