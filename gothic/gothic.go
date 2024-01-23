@@ -22,7 +22,7 @@ import (
 	"os"
 	"strings"
 
-	"github.com/Ticket-Service/auth"
+	goth "github.com/Ticket-Service/auth"
 	"github.com/Ticket-Service/auth/proxy"
 	"github.com/gorilla/mux"
 	"github.com/gorilla/sessions"

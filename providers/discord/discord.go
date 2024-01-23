@@ -10,7 +10,6 @@ import (
 	"io/ioutil"
 	"log"
 	"net/http"
-	"net/url"
 
 	goth "github.com/Ticket-Service/auth"
 	"github.com/Ticket-Service/auth/proxy"
@@ -85,7 +84,9 @@ func (p *Provider) SetPermissions(permissions string) {
 }
 
 func (p *Provider) Client() *http.Client {
-	return goth.HTTPClientWithFallBack(p.HTTPClient)
+	proxy := proxy.Get()
+	log.Println("using proxy", proxy)
+	return goth.HTTPClientWithFallBack(p.HTTPClient, proxy)
 }
 
 // Debug is no-op for the Discord package.
@@ -127,30 +128,13 @@ func (p *Provider) FetchUser(session goth.Session) (goth.User, error) {
 		return user, fmt.Errorf("%s cannot get user information without accessToken", p.providerName)
 	}
 
-	proxyURL := proxy.Get()
-	proxy, err := url.Parse(proxyURL)
-	if err != nil {
-		return user, err
-	}
-
-	log.Println("using proxy:", proxyURL)
-
-	httpClient := &http.Client{
-		Transport: &http.Transport{
-			Proxy: http.ProxyURL(proxy),
-		},
-	}
-
-	// Create a new request
 	req, err := http.NewRequest("GET", userEndpoint, nil)
 	if err != nil {
 		return user, err
 	}
 	req.Header.Set("Accept", "application/json")
 	req.Header.Set("Authorization", "Bearer "+s.AccessToken)
-
-	// Make the request using the custom HTTP client
-	resp, err := httpClient.Do(req)
+	resp, err := p.Client().Do(req)
 	if err != nil {
 		if resp != nil {
 			resp.Body.Close()
