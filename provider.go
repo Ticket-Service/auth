@@ -4,7 +4,6 @@ import (
 	"context"
 	"fmt"
 	"net/http"
-	"net/url"
 
 	"golang.org/x/oauth2"
 )
@@ -68,28 +67,9 @@ func ContextForClient(h *http.Client) context.Context {
 }
 
 // HTTPClientWithFallBack to be used in all fetch operations.
-func HTTPClientWithFallBack(h *http.Client, proxyURL string) *http.Client {
+func HTTPClientWithFallBack(h *http.Client) *http.Client {
 	if h != nil {
-		if proxyURL != "" {
-			proxy, err := url.Parse(proxyURL)
-			if err == nil {
-				h.Transport = &http.Transport{
-					Proxy: http.ProxyURL(proxy),
-				}
-			}
-		}
 		return h
 	}
-
-	defaultClient := http.DefaultClient
-	if proxyURL != "" {
-		proxy, err := url.Parse(proxyURL)
-		if err == nil {
-			defaultClient.Transport = &http.Transport{
-				Proxy: http.ProxyURL(proxy),
-			}
-		}
-	}
-
-	return defaultClient
+	return http.DefaultClient
 }
