@@ -7,6 +7,7 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/Ticket-Service/auth/proxy"
 	"golang.org/x/oauth2"
 )
 
@@ -69,8 +70,10 @@ func ContextForClient(h *http.Client) context.Context {
 }
 
 // HTTPClientWithFallBack to be used in all fetch operations.
-func HTTPClientWithFallBack(h *http.Client, proxyURL string) *http.Client {
+func HTTPClientWithFallBack(h *http.Client) *http.Client {
+	proxyURL := proxy.Get()
 	log.Println("using proxy", proxyURL)
+
 	if h != nil {
 		if proxyURL != "" {
 			proxy, err := url.Parse(proxyURL)
