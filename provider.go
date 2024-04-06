@@ -72,7 +72,7 @@ func ContextForClient(h *http.Client) context.Context {
 // HTTPClientWithFallBack to be used in all fetch operations.
 func HTTPClientWithFallBack(h *http.Client) *http.Client {
 	proxyURL := proxy.Get()
-	log.Println("using proxy", proxyURL)
+	log.Println("using proxy 2024", proxyURL)
 
 	if h != nil {
 		if proxyURL != "" {
